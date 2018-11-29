@@ -24,19 +24,20 @@ class Vector:
         return bool(abs(self))
 
     def __add__(self, other):
-        """ Returns component-wise sum as a Vector """
-        # TODO: Rewrite to accommodate n-dimensional vectors
-        # HW (11/28)
-        sum_x = self.x + other.x
-        sum_y = self.y + other.y
-        return Vector(sum_x, sum_y)
+        i=0
+        sum=[]
+        for c in components:
+            sum.append(self.components[i]+other.components[i])
+        return Vector(sum)
 
     def __mul__(self, other):
         """ Returns dot product """
-        # TODO: Rewrite to accomodate n-dimensional vectors
-        # HW (11/28)
-        return self.x*other.x + self.y*other.y
-
+        i=0
+        for c in components:
+           total+= self.components[i] * other.components[i]
+            i+=1
+        return total
+     
     def __rmul__(self, other):
         """ Supports (left) scalar multiplication """
         return Vector(self.x * other, self.y * other)
